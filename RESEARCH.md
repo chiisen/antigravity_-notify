@@ -83,6 +83,37 @@
 
 ---
 
+### 5. Chrome DevTools Protocol (CDP) - ✅ 成功方案
+
+**方法**：使用 Chrome DevTools Protocol 連接到 Antigravity 的 Electron 渲染程序，輪詢 UI 狀態並即時同步。
+
+**結果**：✅ 成功
+
+**專案**：[krishnakanthb13/antigravity_phone_chat](https://github.com/krishnakanthb13/antigravity_phone_chat)
+
+**運作原理**：
+```
+Antigravity (Electron) ──[CDP]──> Node.js Server ──[WebSocket]──> 手機/瀏覽器
+```
+
+1. 以 debug 模式啟動 Antigravity：`antigravity . --remote-debugging-port=9000`
+2. Node.js 伺服器建立 CDP 連接到 Antigravity
+3. 輪詢 UI 元素，進行 Delta 檢測
+4. 通過 WebSocket 即時傳送到客戶端
+
+**功能**：
+- 即時監控 Antigravity 對話
+- 遠端控制：傳送訊息、停止生成、切換模型
+- 滾動同步
+- 支援本地/全球遠端訪問（透過 ngrok）
+
+**穩定性評估**：
+- ⭐⭐⭐⭐⭐ 官方無法輕易防堵（使用標準 CDP 協議，是 Electron 內建功能）
+- 190 stars，21 forks
+- 持續更新中（2026-02-20 發布 v0.2.17）
+
+---
+
 ## Antigravity 架構分析
 
 ```
@@ -113,6 +144,7 @@
 
 | 方案 | 穩定性 | 風險 |
 |------|--------|------|
+| **CDP (Chrome DevTools Protocol)** | ⭐⭐⭐⭐⭐ | ✅ 最佳方案 |
 | Antigravity 官方 API | ⭐⭐⭐⭐⭐ | 需確認是否存在 |
 | 本地日誌監控 | ⭐ | 資料不足 |
 | Shadow Extension | ❌ | 已被官方封堵 |
@@ -120,9 +152,14 @@
 
 ### 建議後續方向
 
-1. **聯繫 Google**：詢問是否有官方 API 或監控方式
-2. **Antigravity 付費版**：可能提供企業級監控功能
-3. **功能建議**：向 Google 提出「核准通知 API」需求
+1. **採用 CDP 方案**：使用 antigravity_phone_chat 的技術架構
+   - 監控：透過 CDP 輪詢 Antigravity UI
+   - 通知：整合 Telegram Bot
+   - 核准：透過 CDP 模擬點擊或輸入
+
+2. 聯繫 Google：詢問是否有官方 API 或監控方式
+
+3. Antigravity 付費版：可能提供企業級監控功能
 
 ---
 
@@ -130,6 +167,7 @@
 
 - [ljw1004/antigravity-trace](https://github.com/ljw1004/antigravity-trace) - LLM 呼叫監控工具
 - [elad12390/antigravity-proxy](https://github.com/elad12390/antigravity-proxy) - MITM 代理實驗（已歸檔）
+- [krishnakanthb13/antigravity_phone_chat](https://github.com/krishnakanthb13/antigravity_phone_chat) - CDP 監控方案 ✅ 成功
 - Antigravity 版本：1.107.0
 - 語言伺服器版本：1.19.4
 
@@ -138,4 +176,4 @@
 **文件資訊**
 - 作者：AI Assistant
 - 建立日期：2026-02-26
-- 版本：v1.0
+- 版本：v1.1
