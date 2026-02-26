@@ -157,9 +157,9 @@ Antigravity (Electron) ──[CDP]──> Node.js Server ──[WebSocket]──
    - 通知：整合 Telegram Bot
    - 核准：透過 CDP 模擬點擊或輸入
 
-2. 聯繫 Google：詢問是否有官方 API 或監控方式
+2. **向 Google 官方反應**：在 Reddit 或官方論壇提議「遠端核准通知」功能
 
-3. Antigravity 付費版：可能提供企業級監控功能
+3. ~~聯繫 Google~~：目前尚無官方 API 或監控方式
 
 ---
 
@@ -168,8 +168,23 @@ Antigravity (Electron) ──[CDP]──> Node.js Server ──[WebSocket]──
 - [ljw1004/antigravity-trace](https://github.com/ljw1004/antigravity-trace) - LLM 呼叫監控工具
 - [elad12390/antigravity-proxy](https://github.com/elad12390/antigravity-proxy) - MITM 代理實驗（已歸檔）
 - [krishnakanthb13/antigravity_phone_chat](https://github.com/krishnakanthb13/antigravity_phone_chat) - CDP 監控方案 ✅ 成功
+- [r/GoogleAntigravityIDE](https://www.reddit.com/r/GoogleAntigravityIDE/) - 社群討論
 - Antigravity 版本：1.107.0
 - 語言伺服器版本：1.19.4
+
+---
+
+## 官方功能調查
+
+經過網路搜尋，**目前尚未發現 Google 官方宣布要做遠端監控/核准通知功能**。
+
+| 來源 | 結果 |
+|------|------|
+| Antigravity 官方網站 | 無遠端控制相關功能 |
+| Reddit r/GoogleAntigravityIDE | 只有社群自發專案，無官方消息 |
+| GitHub Issues | 無官方回覆 |
+
+建議：可在 Reddit 發起「Feature Request」向官方反應需求。
 
 ---
 
